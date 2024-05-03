@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
     
     private void Start()
     {
+        //show welcome screen
         ChangeStateofGame(GameState.Welcome);
     }
 
