@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject welUI;
     [SerializeField] private GameObject instUI;
     [SerializeField] private GameObject gameplayUI;
+    [SerializeField] private GameObject govplayUI;
     private void Awake()
     {
         if (instance == null) //so that the game mangers if there is more than 1 they dont fight 
@@ -80,14 +81,24 @@ public class GameManager : MonoBehaviour
     public void UpdateHealth(int Health)
     {
         scoreData.currentHealth = Health;
+   
+        
+        if (scoreData.currentHealth == 0)
+        {
+            ChangeStateofGame(GameState.EndGame);
+        }
+
     }
+
     
     public void ChangeStateofGame(GameState newState)
     {
         welUI?.SetActive(newState == GameState.Welcome);
         instUI?.SetActive(newState == GameState.Instuctions);
         gameplayUI?.SetActive(newState == GameState.Playing);
-
+        govplayUI?.SetActive(newState == GameState.EndGame);
+            
+        
         State = newState;
         Debug.Log(State);
     }
@@ -103,5 +114,10 @@ public class GameManager : MonoBehaviour
     public void ChangeStatetoInstructions()
     {
         ChangeStateofGame(GameState.Instuctions);
+    }
+    
+    public void ChangeStatetoEnd()
+    {
+        ChangeStateofGame(GameState.EndGame);
     }
 }

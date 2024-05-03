@@ -4,6 +4,6 @@ public enum GameState
     Instuctions,
     Playing,
     EndGame,
-    Reset
+   
     
 }

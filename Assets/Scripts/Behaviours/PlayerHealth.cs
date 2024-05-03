@@ -32,7 +32,8 @@ public class PlayerHealth : MonoBehaviour
             //find from Game Manger the value of the health which is value 
             GameManager.instance.UpdateHealth(value);
         }
-    }
+        
+}
 
 
     private  void TakeDamage(int amount)
@@ -43,12 +44,16 @@ public class PlayerHealth : MonoBehaviour
             //se jerga jibda l-icore minn 100
             CurrentHealth = maxHealth;
         }
+        
+        
+       
     }
     
     private void Start()
     {
         
         CurrentHealth = GameManager.instance.Data.currentHealth;
+        
     } 
     
     
@@ -67,4 +72,6 @@ public class PlayerHealth : MonoBehaviour
 
        }
     }
+
+  
 }
