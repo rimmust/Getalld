@@ -1,4 +1,7 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -9,6 +12,11 @@ namespace Editor
     {
         private const string UssFileName = "ItemEditorUSS";
         private const string FilePrefix = "ITEM_";
+        //declare the list 
+        private List<AudioClip> SoundClips = new List<AudioClip>();
+
+        //declare the var
+        private AudioClip selectedSound;
 
         [MenuItem("Game/Audio")]
         private static void ShowWindow()
@@ -17,7 +25,13 @@ namespace Editor
             window.titleContent = new GUIContent("TITLE");
             window.Show();
         }
-        
+
+        private void OnEnable()
+        {
+            // load all audio
+            SoundClips = new(Resources.LoadAll<AudioClip>("Sound"));
+        }
+
         private void CreateGUI()
         {
             //top continer
@@ -35,33 +49,60 @@ namespace Editor
             topContainer.Add(playButton);
             topContainer.Add(soundPlaying);
 
-            //to see the contianre
-            rootVisualElement.Add(topContainer);
+            
             
             //middle continer
             var middleContainer = new VisualElement();
             
             //declare the list
-            const int itemCount = 7;
-            var items = new List<string>(itemCount);
+            Func<VisualElement> makeItem = () => new Label();
+            const int itemHeight = 20;
+
+            Action<VisualElement, int> bindItem = (element, i) => (element as Label).text = "Audio " + SoundClips[i].name;
             
-            var Sound1 = new Button { text = "Sound1" };
-            var Sound2 = new Button { text = "Sound2" };
-            var Sound3 = new Button { text = "Sound3" };
-            var Sound4 = new Button { text = "Sound4" };
-            var Sound5 = new Button { text = "Sound5" };
-            var Sound6 = new Button { text = "Sound6" };
+            //the soundclcips
+            var ListView = new ListView(SoundClips, itemHeight, makeItem,bindItem);
+
+            ListView.selectionChanged += element =>
+            {
+                selectedSound = element.First() as AudioClip;
+                if (selectedSound != null)
+                {
+                    //change to play sound
+                    playButton.text = $"play {selectedSound.name}";
+                }
+                else
+                {
+                    
+                    playButton.text = $"play";
+                    
+                }
+                
+            };
             
             
-            //add elements in the container
-            middleContainer.Add(Sound1);
-            middleContainer.Add(Sound2);
-            middleContainer.Add(Sound3);
-            middleContainer.Add(Sound4);
-            middleContainer.Add(Sound5);
-            middleContainer.Add(Sound6);
+            
+
+            middleContainer.Add(ListView);
+            
+            // var Sound1 = new Button { text = "Sound1" };
+            // var Sound2 = new Button { text = "Sound2" };
+            // var Sound3 = new Button { text = "Sound3" };
+            // var Sound4 = new Button { text = "Sound4" };
+            // var Sound5 = new Button { text = "Sound5" };
+            // var Sound6 = new Button { text = "Sound6" };
+            //
+            //
+            // //add elements in the container
+            // middleContainer.Add(Sound1);
+            // middleContainer.Add(Sound2);
+            // middleContainer.Add(Sound3);
+            // middleContainer.Add(Sound4);
+            // middleContainer.Add(Sound5);
+            // middleContainer.Add(Sound6);
             
             //to see the contianre
+            rootVisualElement.Add(topContainer);
             rootVisualElement.Add(middleContainer);
             
             
