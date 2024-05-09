@@ -1,10 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using Unity.VisualScripting;
 using UnityEditor;
+using UnityEditor.Compilation;
+using UnityEditor.Profiling;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Assembly = System.Reflection.Assembly;
 
 namespace Editor
 {
@@ -40,6 +44,7 @@ namespace Editor
             var title = new Label { text = "Audio Manager" };
             //button
             var playButton = new Button { text = "Play" };
+            playButton.clicked += () => PlayClip(selectedSound);
             
             var soundPlaying = new Label { text = "Mp3" };
             
@@ -73,14 +78,10 @@ namespace Editor
                 }
                 else
                 {
-                    
+
                     playButton.text = $"play";
-                    
                 }
-                
             };
-            
-            
             
 
             middleContainer.Add(ListView);
@@ -108,8 +109,14 @@ namespace Editor
             
             
         }
-        
-        
+
+        public static void PlayClip(AudioClip clip)
+        {
+            var go = new GameObject("TEMP_AUDIO");
+            var audioSource = go.AddComponent<AudioSource>();
+            audioSource.PlayOneShot(clip);
+            
+        }
 
     }
 }

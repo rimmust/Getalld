@@ -2,43 +2,42 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 namespace Getalld
 {
     public class EventManager : MonoBehaviour
     {
-        private AudioSource source;
-        private AudioSource source2;
+        //where to spawn
+        [SerializeField] private Tilemap SoundTileMap;
+
+        //what to spaewn
+        [SerializeField]  private SoundTrigger soundeventrigger;
         
         private Collider2D soundTrigger;
 
-        private void OnTriggerEnter2D(Collider2D collider)
-        {
-            //check with the  tag
-           if(collider.gameObject.CompareTag("Player"))
-           {
-               //on trigger play Sound
-               source.Play();
-           }
-        }
-        
         
 
-        private void Awake()
+        private void Start()
         {
-            source = GetComponent<AudioSource>();
-            soundTrigger = GetComponent<Collider2D>();
-        }
-
-        private void OnCollisionEnter2D(Collider2D collider)
-        {
-            //check with the  tag
-            if(collider.gameObject.CompareTag("Player"))
+            var positions = SoundTileMap.cellBounds.allPositionsWithin;
+            foreach (var cell in positions)
             {
-                //on trigger play Sound
-                source2.Play();
+                if (SoundTileMap.GetTile(cell) == null)
+                    continue;
+            
+                //find cell position in world
+                var position = SoundTileMap.CellToWorld(cell) + SoundTileMap.tileAnchor;
+                Instantiate(soundeventrigger, position, Quaternion.identity);
             }
         }
+        
+       
+        
+     
+
+        
+       
         
        
     }
