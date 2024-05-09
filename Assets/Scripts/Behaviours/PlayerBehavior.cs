@@ -6,6 +6,8 @@ namespace Behaviours
     [RequireComponent(typeof(Rigidbody2D))]
     public class PlayerBehaviour : MonoBehaviour
     {
+        private Animator _animator;
+        
         //move speed of the player
         [SerializeField] private float moveSpeed = 10;
         
@@ -23,6 +25,7 @@ namespace Behaviours
         {
             //rigidblody component of the player
             rb = GetComponent<Rigidbody2D>();
+            _animator = GetComponentInChildren<Animator>();
         }
         
         // Start is called before the first frame update
@@ -49,6 +52,8 @@ namespace Behaviours
 
             }
             
+            _animator.SetBool("Walking",movement.x != 0);
+            
             //se jaqra il position ta fejn wasal il-player 
             GameManager.instance.UpdatePlayerPosition(rb.position);
         }
@@ -66,6 +71,7 @@ namespace Behaviours
             var velocity = rb.velocity;
             velocity.y = jumpSpeed;
             rb.velocity = velocity;
+           
 
         }
         

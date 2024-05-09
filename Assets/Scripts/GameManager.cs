@@ -86,7 +86,8 @@ public class GameManager : MonoBehaviour
         
         if (scoreData.currentHealth == 0)
         {
-            ChangeStateofGame(GameState.EndGame);
+           ChangeStateofGame(GameState.EndGame);
+          
         }
 
     }
@@ -101,7 +102,7 @@ public class GameManager : MonoBehaviour
             
         
         State = newState;
-        Debug.Log(State);
+      //  Debug.Log(State);
     }
 
     public void ChangeStatetoPlaying()
@@ -119,6 +120,9 @@ public class GameManager : MonoBehaviour
     
     public void ChangeStatetoEnd()
     {
+        
         ChangeStateofGame(GameState.EndGame);
+        
+
     }
 }
