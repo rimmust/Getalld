@@ -8,6 +8,9 @@ namespace Behaviours
     {
         private Animator _animator;
         
+        //player animations
+      
+        
         //move speed of the player
         [SerializeField] private float moveSpeed = 10;
         

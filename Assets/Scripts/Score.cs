@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 [System.Serializable] //the data becomes accesible for saving 
 public struct Score 
 {
+   
+    
     //struct is just a data structure
     public int score { get;  set;}
     

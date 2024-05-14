@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -9,7 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance { get; private set; }
 
     [Tooltip("The associated text component.")] [SerializeField]
-    private TextMeshProUGUI scoreTextUI;
+      private TextMeshProUGUI scoreTextUI;
 
     [SerializeField] private TextMeshProUGUI highscoreText;
 
@@ -49,9 +50,11 @@ public class GameManager : MonoBehaviour
     }
 
     private void OnDestroy()
-    {
+   {
+      
         SaveSData.Save(scoreData);
-    }
+       
+   }
     
     public void AddScore(int points = 1)
     {
@@ -87,7 +90,7 @@ public class GameManager : MonoBehaviour
         if (scoreData.currentHealth == 0)
         {
            ChangeStateofGame(GameState.EndGame);
-          
+           
         }
 
     }
@@ -120,9 +123,12 @@ public class GameManager : MonoBehaviour
     
     public void ChangeStatetoEnd()
     {
+
         
         ChangeStateofGame(GameState.EndGame);
+       
         
-
     }
+
+   
 }
