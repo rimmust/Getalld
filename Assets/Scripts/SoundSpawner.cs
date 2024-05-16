@@ -4,31 +4,32 @@ using System.Collections.Generic;
 using System.Linq;
 using Getalld.Data;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
 
-public class Ds : MonoBehaviour
+public class SoundSpawner : MonoBehaviour
 {
     //where to spawn
-    [SerializeField] private Tilemap diamondTileMap;
+    [SerializeField] private Tilemap tileMap;
 
     //what to spaewn
-    [SerializeField]  private SoundTrigger diamond;
+    [SerializeField]  private SoundTrigger prefab;
 
     //the sound settings
     [SerializeField]  private SoundSettings Settings;
 
     private void Start()
     {
-        var positions = diamondTileMap.cellBounds.allPositionsWithin;
+        var positions = tileMap.cellBounds.allPositionsWithin;
         foreach (var cell in positions)
         {
-            var tile = diamondTileMap.GetTile(cell);
+            var tile = tileMap.GetTile(cell);
             if (tile == null || tile is not DiamondTile diamondTile)
                 continue;
             
             //find cell positionn in wolrd
-            var position = diamondTileMap.CellToWorld(cell) + diamondTileMap.tileAnchor;
-            var trigger = Instantiate(diamond, position, Quaternion.identity);
+            var position = tileMap.CellToWorld(cell) + tileMap.tileAnchor;
+            var trigger = Instantiate(prefab, position, Quaternion.identity);
             trigger.SetClip(Settings.GetClip(diamondTile.soundType));
         }
     }
