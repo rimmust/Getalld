@@ -20,9 +20,9 @@ public class SoundSettingsEditor : UnityEditor.Editor
         var background1 = CreateField("background1", "backgroundMusic1");
         var background2 = CreateField("background2", "backgroundMusic2");
         var diamondsound = CreateField("diamondsound", "collectDiamond");
-        var collsions = CreateField("collsions", "collsion");
+        var collsions = CreateField("collisions", "collision");
         var gameovers = CreateField("gameovers", "gameover");
-        var reduceh = CreateField("reduceh", "reducehealth");
+        var reduceh = CreateField("reduceh", "reducehalth");
         var jumps = CreateField("jumps", "jump");
         var obstacles = CreateField("obstcales", "obstacle");
         var watersound = CreateField("watersound", "water");

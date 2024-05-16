@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Getalld;
 using UnityEngine;
 
 [System.Serializable]
 
 public class SoundTrigger: MonoBehaviour
-    {
-        private AudioSource musicSource;
+{
+    private AudioClip clip;
         
         private void OnTriggerEnter2D(Collider2D collider)
         {
@@ -14,16 +15,14 @@ public class SoundTrigger: MonoBehaviour
             if(collider.gameObject.CompareTag("Player"))
             {
                 //on trigger play Sound
-                musicSource.PlayOneShot(musicSource.clip);
+                EventManager.Instance.SfxSource.PlayOneShot(clip);
                
             }
         }
-        
-        private void Awake()
+
+        public void SetClip(AudioClip newClip)
         {
-            musicSource = GetComponent<AudioSource>();
-            
-            
+            clip = newClip;
         }
     }
 

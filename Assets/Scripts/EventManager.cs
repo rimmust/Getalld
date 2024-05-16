@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Getalld.Data;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -11,15 +12,19 @@ namespace Getalld
         //where to spawn
         [SerializeField] private Tilemap SoundTileMap;
 
-        //what to spaewn
-        [SerializeField]  private SoundTrigger soundeventrigger;
+        //the sound settings
+        [SerializeField]  private SoundSettings Settings;
         
         private Collider2D soundTrigger;
 
         //the game object created in unity
-        public AudioSource musicSource, sfxSource;
+        [SerializeField] AudioSource musicSource, sfxSource;
 
-        public static EventManager Instance;
+        public AudioSource MusicSource => musicSource;
+
+        public AudioSource SfxSource => sfxSource;
+
+        public static EventManager Instance { get; private set; }
 
         private void Awake()
         {
@@ -44,7 +49,7 @@ namespace Getalld
             
                 //find cell position in world 
                 var position = SoundTileMap.CellToWorld(cell) + SoundTileMap.tileAnchor;
-                Instantiate(soundeventrigger, position, Quaternion.identity);
+                //Instantiate(soundeventrigger, position, Quaternion.identity);
             }
             
             //playMusic("theme")
