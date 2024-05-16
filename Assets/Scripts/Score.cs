@@ -18,4 +18,5 @@ public struct Score
 
     //player currenthealth habba il-health bar 
     public int currentHealth;
+    
 }

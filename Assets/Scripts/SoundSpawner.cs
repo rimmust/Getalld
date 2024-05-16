@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Getalld;
 using Getalld.Data;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -24,13 +25,13 @@ public class SoundSpawner : MonoBehaviour
         foreach (var cell in positions)
         {
             var tile = tileMap.GetTile(cell);
-            if (tile == null || tile is not DiamondTile diamondTile)
+            if (tile == null || tile is not SoundTile soundTile)
                 continue;
             
             //find cell positionn in wolrd
             var position = tileMap.CellToWorld(cell) + tileMap.tileAnchor;
             var trigger = Instantiate(prefab, position, Quaternion.identity);
-            trigger.SetClip(Settings.GetClip(diamondTile.soundType));
+            trigger.SetClip(Settings.GetClip(soundTile.soundType));
         }
     }
     

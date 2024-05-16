@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject instUI;
     [SerializeField] private GameObject gameplayUI;
     [SerializeField] private GameObject govplayUI;
+   
     private void Awake()
     {
         if (instance == null) //so that the game mangers if there is more than 1 they dont fight 
@@ -41,12 +42,16 @@ public class GameManager : MonoBehaviour
 
         scoreData = SaveSData.Load();
         AddScore(0);
+        
+      
     }
     
     private void Start()
     {
         //show welcome screen
+        
         ChangeStateofGame(GameState.Welcome);
+       
     }
 
     private void OnDestroy()
@@ -92,13 +97,13 @@ public class GameManager : MonoBehaviour
         
         if (scoreData.currentHealth == 0)
         {
+            //check it
+            UpdatePlayerPosition(new Vector3(-11.5f, -3.5f));
            ChangeStateofGame(GameState.EndGame);
-           //play sound effect
-           //EventManager.Instance.PlaySfx("");
-           //stop music
-           //EventManager.Instance.musicSource.Stop();
+           
            
         }
+        
 
     }
 
@@ -109,6 +114,7 @@ public class GameManager : MonoBehaviour
         instUI?.SetActive(newState == GameState.Instuctions);
         gameplayUI?.SetActive(newState == GameState.Playing);
         govplayUI?.SetActive(newState == GameState.EndGame);
+     
             
         
         State = newState;
@@ -133,9 +139,9 @@ public class GameManager : MonoBehaviour
 
         
         ChangeStateofGame(GameState.EndGame);
-       
         
     }
-
+    
+  
    
 }
