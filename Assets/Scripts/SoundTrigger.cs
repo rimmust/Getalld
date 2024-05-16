@@ -14,14 +14,14 @@ public class SoundTrigger: MonoBehaviour
             if(collider.gameObject.CompareTag("Player"))
             {
                 //on trigger play Sound
-               // source.PlayOneShot(source.clip);
+                musicSource.PlayOneShot(musicSource.clip);
                
             }
         }
         
         private void Awake()
         {
-           // source = GetComponent<AudioSource>();
+            musicSource = GetComponent<AudioSource>();
             
             
         }

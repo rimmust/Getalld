@@ -69,6 +69,7 @@ public class PlayerHealth : MonoBehaviour
        {
             TakeDamage(2);
             Debug.Log("obstacle touches");
+            //EventManager.Instance.PlaySfx("");
 
        }
     }

@@ -16,7 +16,23 @@ namespace Getalld
         
         private Collider2D soundTrigger;
 
-        
+        //the game object created in unity
+        public AudioSource musicSource, sfxSource;
+
+        public static EventManager Instance;
+
+        private void Awake()
+        {
+            if (Instance == null)
+            {
+                Instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
 
         private void Start()
         {
@@ -26,11 +42,15 @@ namespace Getalld
                 if (SoundTileMap.GetTile(cell) == null)
                     continue;
             
-                //find cell position in world
+                //find cell position in world 
                 var position = SoundTileMap.CellToWorld(cell) + SoundTileMap.tileAnchor;
                 Instantiate(soundeventrigger, position, Quaternion.identity);
             }
+            
+            //playMusic("theme")
         }
+        
+        //add the play music method
         
        
         

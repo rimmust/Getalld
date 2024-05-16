@@ -60,6 +60,9 @@ public class GameManager : MonoBehaviour
     {
         //change by 1
         scoreData.score += points;
+        
+        //play Sound
+        //EventManager.Instance.PlaySfx("");
 
 
         //highscore
@@ -90,6 +93,10 @@ public class GameManager : MonoBehaviour
         if (scoreData.currentHealth == 0)
         {
            ChangeStateofGame(GameState.EndGame);
+           //play sound effect
+           //EventManager.Instance.PlaySfx("");
+           //stop music
+           //EventManager.Instance.musicSource.Stop();
            
         }
 

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Getalld;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -41,7 +42,8 @@ public class DiamondCollector : MonoBehaviour
            //Score++;
            GameManager.instance.AddScore();
            Destroy(other.gameObject);
-           
+            //play the sound on trigger
+           //EventManager.Instance.PlaySfx("");
            
         }
     }
