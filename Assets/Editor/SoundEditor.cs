@@ -13,7 +13,7 @@ public class SoundSettingsEditor : UnityEditor.Editor
         VisualElement root = new VisualElement();
 
         // VisualElements objects can contain other VisualElement following a tree hierarchy.
-        VisualElement label = new Label("Hello World! From C#");
+        VisualElement label = new Label("Audio Clips Sound");
         root.Add(label);
 
         // Background 1
