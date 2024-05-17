@@ -16,6 +16,7 @@ namespace Getalld
         [SerializeField]  private SoundSettings Settings;
         
         private Collider2D soundTrigger;
+        
 
         //the game object created in unity
         [SerializeField] AudioSource musicSource, sfxSource;
@@ -52,10 +53,10 @@ namespace Getalld
                 //Instantiate(soundeventrigger, position, Quaternion.identity);
             }
             
-            //playMusic("theme")
+           
         }
         
-        //add the play music method
+     
         
        
         

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FILENAME
   m_EditorClassIdentifier: 
   backgroundMusic1: {fileID: 8300000, guid: c34241aa16155db40b39b7d2e6c53e17, type: 3}
-  backgroundMusic2: {fileID: 8300000, guid: 8ff16544b33f9d84998186c8951251db, type: 3}
+  backgroundMusic2: {fileID: 8300000, guid: c34241aa16155db40b39b7d2e6c53e17, type: 3}
   collectDiamond: {fileID: 8300000, guid: acb852bfcaf24724cbc77d24a46b3604, type: 3}
   collision: {fileID: 8300000, guid: e3c9cbbf0a1530c449b20f616ce48fe5, type: 3}
   gameover: {fileID: 8300000, guid: 2cef0aac2cee3b3408e24de0e2b52ea2, type: 3}

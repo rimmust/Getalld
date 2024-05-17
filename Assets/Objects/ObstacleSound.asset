@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55292eba3dd84e81a768bc2880f275dc, type: 3}
-  m_Name: New Sound Tile
+  m_Name: ObstacleSound
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: -1643692724, guid: 8d26cdad27164614b9eaad837d94d8ee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

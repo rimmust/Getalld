@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Getalld;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -66,12 +67,11 @@ public class PlayerHealth : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Obstacle"))
-       {
+        {
             TakeDamage(2);
             Debug.Log("obstacle touches");
-            //EventManager.Instance.PlaySfx("");
 
-       }
+        }
     }
 
   

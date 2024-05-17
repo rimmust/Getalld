@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject instUI;
     [SerializeField] private GameObject gameplayUI;
     [SerializeField] private GameObject govplayUI;
+    [SerializeField] private GameObject winlayUI;
    
     private void Awake()
     {
@@ -85,7 +86,7 @@ public class GameManager : MonoBehaviour
 
     public void UpdatePlayerPosition(Vector3 pos)
     {
-        scoreData.playerPosition = pos;
+      //  scoreData.playerPosition = pos;
     }
 
     //healthbar
@@ -98,9 +99,8 @@ public class GameManager : MonoBehaviour
         if (scoreData.currentHealth == 0)
         {
             //check it
-            UpdatePlayerPosition(new Vector3(-11.5f, -3.5f));
+         //   UpdatePlayerPosition(new Vector3(-11.5f, -3.5f));
            ChangeStateofGame(GameState.EndGame);
-           
            
         }
         
@@ -114,11 +114,10 @@ public class GameManager : MonoBehaviour
         instUI?.SetActive(newState == GameState.Instuctions);
         gameplayUI?.SetActive(newState == GameState.Playing);
         govplayUI?.SetActive(newState == GameState.EndGame);
-     
-            
+        winlayUI?.SetActive(newState == GameState.Win);
         
         State = newState;
-      //  Debug.Log(State);
+     
     }
 
     public void ChangeStatetoPlaying()
@@ -139,6 +138,14 @@ public class GameManager : MonoBehaviour
 
         
         ChangeStateofGame(GameState.EndGame);
+        
+    }
+    
+    public void ChangeStatetoWin()
+    {
+
+        
+        ChangeStateofGame(GameState.Win);
         
     }
     

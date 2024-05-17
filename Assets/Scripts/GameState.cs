@@ -3,7 +3,8 @@ public enum GameState
     Welcome,
     Instuctions,
     Playing,
-    EndGame
+    EndGame,
+    Win
    
     
 }

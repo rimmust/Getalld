@@ -1,4 +1,7 @@
 using System;
+using Getalld;
+using Getalld.Data;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Behaviours
@@ -13,7 +16,8 @@ namespace Behaviours
         private const string P_WALK = "Walking";
         private const string P_GRND = "Grounded";
 
-
+        
+        
         //move speed of the player
         [SerializeField] private float moveSpeed = 10;
 
@@ -39,6 +43,7 @@ namespace Behaviours
         {
             rb.MovePosition(GameManager.instance.Data.playerPosition);
             // _animator = GetComponent<Animator>();
+            _animator.SetTrigger(P_GRND);
 
         }
 
@@ -48,25 +53,26 @@ namespace Behaviours
             {
                 return;
             }
-
-
             //player moves left and right only horizontal 
             movement.x = Input.GetAxisRaw("Horizontal") * moveSpeed;
             movement.y = rb.velocity.y;
-            //ChangeAnimationState(P_WALK);
+            _animator.SetBool(P_WALK,movement.x !=0);
 
-            if (Input.GetButtonDown("Jump"))
+
+
+            if (Input.GetButtonDown("Jump") &&  !Grounded)
             {
-
+                
+                _animator.SetBool(P_GRND, Grounded);
                 Jump();
 
+
             }
-
-            _animator.SetBool(P_WALK, movement.x != 0);
-            _animator.SetBool(P_GRND, Grounded);
-
+            
             //se jaqra il position ta fejn wasal il-player 
             GameManager.instance.UpdatePlayerPosition(rb.position);
+
+
         }
 
         private void FixedUpdate()
@@ -74,15 +80,17 @@ namespace Behaviours
             //player moves in direction with time.delta time
             rb.velocity = movement;
         }
-        
+
         private void Jump()
         {
             var velocity = rb.velocity;
             velocity.y = jumpSpeed;
             rb.velocity = velocity;
-            // ChangeAnimationState(P_JUMP);
+
         }
-        
-        
+
     }
+
+
+
 }
