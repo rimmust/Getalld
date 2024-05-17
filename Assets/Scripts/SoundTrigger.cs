@@ -8,7 +8,10 @@ using UnityEngine;
 
 public class SoundTrigger: MonoBehaviour
 {
+    //the clip 
     private AudioClip clip;
+    
+    //when touch an object play sound
     private void OnTriggerEnter2D(Collider2D collider)
         {
             //check with the  tag
@@ -19,6 +22,8 @@ public class SoundTrigger: MonoBehaviour
 
             }
         }
+    
+    //create a new clip
 
         public void SetClip(AudioClip newClip)
         {

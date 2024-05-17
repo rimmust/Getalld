@@ -6,7 +6,7 @@ namespace Getalld
 {
     public class Sack : MonoBehaviour
     {
-      
+      //as the player touch the sack the winning scene is shown
         private void OnTriggerEnter2D(Collider2D other)
         {
            

@@ -9,41 +9,15 @@ using UnityEngine.Tilemaps;
 
 public class DiamondCollector : MonoBehaviour
 {
-   // [Tooltip("The associated text component.")]
-    //[SerializeField] private TextMeshProUGUI scoreTextUI;
-        
-    // The player's score.
-   // private int _score;
-
-    /// <summary>
-    /// The player's score.
-    /// </summary>
-    //private int Score
-   // {
-     //   get
-      //  {
-        //    return _score;
-        //}
-        //set
-        //{
-          //  _score = value;
-           // scoreTextUI.text = _score.ToString();
-       // }
-    //}
-
-
-  private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
    {
-        //arrange it from player to Diaomnd
-        //create the tag for Diaomnd
+       
+       //check if the tag is diamond if yes add score and desctroy game object
         if (other.CompareTag("Diamond"))
-        {
-            Debug.Log("add score");
-           //Score++;
+        { 
+            //Debug.Log("add score");
            GameManager.instance.AddScore();
            Destroy(other.gameObject);
-            //play the sound on trigger
-           //EventManager.Instance.PlaySfx("");
            
         }
     }

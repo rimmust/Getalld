@@ -67,10 +67,6 @@ public class GameManager : MonoBehaviour
         //change by 1
         scoreData.score += points;
         
-        //play Sound
-        //EventManager.Instance.PlaySfx("");
-
-
         //highscore
         if (scoreData.score > scoreData.highScore)
         {
@@ -86,7 +82,7 @@ public class GameManager : MonoBehaviour
 
     public void UpdatePlayerPosition(Vector3 pos)
     {
-      //  scoreData.playerPosition = pos;
+        scoreData.playerPosition = pos;
     }
 
     //healthbar
@@ -98,16 +94,18 @@ public class GameManager : MonoBehaviour
         
         if (scoreData.currentHealth == 0)
         {
-            //check it
-         //   UpdatePlayerPosition(new Vector3(-11.5f, -3.5f));
+            
+          
            ChangeStateofGame(GameState.EndGame);
+           //goes back to the starting position
+           UpdatePlayerPosition(new Vector3(-11.5f, -3.5f));
            
         }
         
 
     }
 
-    
+    //this method declare each staete
     public void ChangeStateofGame(GameState newState)
     {
         welUI?.SetActive(newState == GameState.Welcome);
@@ -120,8 +118,10 @@ public class GameManager : MonoBehaviour
      
     }
 
+    //change states
     public void ChangeStatetoPlaying()
     {
+        
         ChangeStateofGame(GameState.Playing);
     }
     public void ChangeStatetoWelcome()
@@ -138,6 +138,7 @@ public class GameManager : MonoBehaviour
 
         
         ChangeStateofGame(GameState.EndGame);
+        
         
     }
     

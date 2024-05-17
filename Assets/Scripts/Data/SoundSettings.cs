@@ -8,6 +8,7 @@ namespace Getalld.Data
     [CreateAssetMenu(fileName = "FILENAME", menuName = "MENUNAME", order = 0)]
     public class SoundSettings : ScriptableObject
     {
+        //the audio clip of all sounds
         [SerializeField] private AudioClip backgroundMusic1;
         [SerializeField] private AudioClip backgroundMusic2;
         [SerializeField] private AudioClip collectDiamond;
@@ -37,6 +38,7 @@ namespace Getalld.Data
 
         public AudioClip Water => water;
 
+        //switch to check each sound type
         public AudioClip GetClip(SoundType type)
         {
             switch (type)

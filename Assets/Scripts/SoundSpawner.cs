@@ -21,6 +21,7 @@ public class SoundSpawner : MonoBehaviour
 
     private void Start()
     {
+        //check which tile 
         var positions = tileMap.cellBounds.allPositionsWithin;
         foreach (var cell in positions)
         {

@@ -44,6 +44,7 @@ public class PlayerHealth : MonoBehaviour
         {
             //se jerga jibda l-icore minn 100
             CurrentHealth = maxHealth;
+          
         }
         
         
@@ -57,13 +58,8 @@ public class PlayerHealth : MonoBehaviour
         
     } 
     
-    
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+  
+//the player take the damage amount
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Obstacle"))
@@ -74,5 +70,6 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+   
   
 }

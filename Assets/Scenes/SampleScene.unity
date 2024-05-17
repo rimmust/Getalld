@@ -2700,7 +2700,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 612416086711493146, guid: 02ba66546c9f43e45a1bdaef3349979d, type: 2}
   m_audioClip: {fileID: 8300000, guid: c34241aa16155db40b39b7d2e6c53e17, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.864
   m_Pitch: 1.94
   Loop: 1
   Mute: 0
@@ -2774,7 +2774,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1.1
+      value: 0.576
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -3076,7 +3076,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 52.000854, y: 3}
+  m_AnchoredPosition: {x: 52.00067, y: 3}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &710409033

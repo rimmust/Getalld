@@ -5,18 +5,22 @@ using UnityEngine.UI;
 
 public class FillBar : MonoBehaviour
 {
+    
     [SerializeField] private  PlayerHealth playerHealth;
 
     private Image fillImage;
 
+    //slider 
     private Slider slider;
 
-    void Awake()
+    //get the slide component
+    private void Awake()
     {
         slider = GetComponent<Slider>();
     }
 
-    void Update()
+    //checks the value of slider
+    private void Update()
     {
         float fillValue = playerHealth.NormalizedHeath;
         slider.value = fillValue;

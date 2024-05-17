@@ -15,6 +15,7 @@ namespace Getalld
         //the sound settings
         [SerializeField]  private SoundSettings Settings;
         
+        //sound trigger
         private Collider2D soundTrigger;
         
 
@@ -40,6 +41,7 @@ namespace Getalld
             }
         }
 
+      
         private void Start()
         {
             var positions = SoundTileMap.cellBounds.allPositionsWithin;

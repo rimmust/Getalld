@@ -3,6 +3,7 @@ using UnityEngine.Tilemaps;
 
 namespace Getalld
 {
+    //declare the sound types
     public enum SoundType
     {
         BackgroundMusic1,

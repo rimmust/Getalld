@@ -9,6 +9,7 @@ namespace Behaviours
     [RequireComponent(typeof(Rigidbody2D))]
     public class PlayerBehaviour : MonoBehaviour
     {
+        //the code used  for the animaation
         private Animator _animator;
         private bool Grounded;
 
@@ -39,11 +40,13 @@ namespace Behaviours
         }
 
         // Start is called before the first frame update
-        void Start()
+       private void Start()
         {
             rb.MovePosition(GameManager.instance.Data.playerPosition);
             // _animator = GetComponent<Animator>();
             _animator.SetTrigger(P_GRND);
+           
+
 
         }
 
@@ -59,7 +62,7 @@ namespace Behaviours
             _animator.SetBool(P_WALK,movement.x !=0);
 
 
-
+//checks if the button is pressed
             if (Input.GetButtonDown("Jump") &&  !Grounded)
             {
                 
@@ -83,13 +86,17 @@ namespace Behaviours
 
         private void Jump()
         {
+            //the jump code
             var velocity = rb.velocity;
             velocity.y = jumpSpeed;
             rb.velocity = velocity;
 
         }
+        
 
     }
+    
+   
 
 
 
