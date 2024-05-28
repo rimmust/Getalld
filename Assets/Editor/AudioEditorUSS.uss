@@ -1,0 +1,19 @@
+:root {
+    flex-direction: row;
+}
+
+.unity-object-field {
+    display: none;
+}
+
+#Sound-List
+{
+    padding-top: 60px;
+    flex: 1;
+}
+
+#AudioList
+{
+    width: 40%;
+}
+

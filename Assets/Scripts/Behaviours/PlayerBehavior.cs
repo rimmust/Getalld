@@ -12,6 +12,11 @@ namespace Behaviours
         //the code used  for the animaation
         private Animator _animator;
         private bool Grounded;
+        [SerializeField] private SoundSettings settings;
+
+        private AudioSource _audioSource;
+
+        
 
         //cont                         same name of animation
         private const string P_WALK = "Walking";
@@ -37,6 +42,7 @@ namespace Behaviours
             //rigidblody component of the player
             rb = GetComponent<Rigidbody2D>();
             _animator = GetComponentInChildren<Animator>();
+            _audioSource = GetComponent<AudioSource>();
         }
 
         // Start is called before the first frame update
@@ -90,6 +96,7 @@ namespace Behaviours
             var velocity = rb.velocity;
             velocity.y = jumpSpeed;
             rb.velocity = velocity;
+            _audioSource.PlayOneShot(settings.Jump);
 
         }
         
