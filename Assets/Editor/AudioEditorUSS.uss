@@ -10,10 +10,16 @@
 {
     padding-top: 60px;
     flex: 1;
+    background-color: black;
 }
 
 #AudioList
 {
     width: 40%;
+    background-color: black;
 }
+
+
+
+
 

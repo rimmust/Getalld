@@ -15,6 +15,7 @@ namespace Behaviours
         [SerializeField] private SoundSettings settings;
 
         private AudioSource _audioSource;
+        private SpriteRenderer _spriteRenderer;
 
         
 
@@ -43,17 +44,13 @@ namespace Behaviours
             rb = GetComponent<Rigidbody2D>();
             _animator = GetComponentInChildren<Animator>();
             _audioSource = GetComponent<AudioSource>();
+            _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         }
 
         // Start is called before the first frame update
        private void Start()
         {
             rb.MovePosition(GameManager.instance.Data.playerPosition);
-            // _animator = GetComponent<Animator>();
-            _animator.SetTrigger(P_GRND);
-           
-
-
         }
 
         private void Update()
@@ -62,26 +59,34 @@ namespace Behaviours
             {
                 return;
             }
+
+            // creates a circle on the player's feet
+            // if it collides with the tilemap, the player is on the ground
+            Grounded = Physics2D.OverlapCircle(rb.position, 0.3f, 1 << LayerMask.NameToLayer("Ground"));
+            
             //player moves left and right only horizontal 
             movement.x = Input.GetAxisRaw("Horizontal") * moveSpeed;
+            
+            
+            // Mathf.Abs turns a negative number to positive (biex ticcekkja condition wahda)
+            if (Mathf.Abs(movement.x) > Mathf.Epsilon)
+            {
+                _spriteRenderer.flipX = movement.x < 0;
+            }
+            
             movement.y = rb.velocity.y;
-            _animator.SetBool(P_WALK,movement.x !=0);
+            //_animator.SetBool(P_WALK,movement.x !=0);
 
 
 //checks if the button is pressed
-            if (Input.GetButtonDown("Jump") &&  !Grounded)
+            if (Input.GetButtonDown("Jump") && Grounded)
             {
-                
-                _animator.SetBool(P_GRND, Grounded);
                 Jump();
-
-
             }
             
             //se jaqra il position ta fejn wasal il-player 
             GameManager.instance.UpdatePlayerPosition(rb.position);
-
-
+            _animator.SetBool(P_GRND, Grounded);
         }
 
         private void FixedUpdate()
