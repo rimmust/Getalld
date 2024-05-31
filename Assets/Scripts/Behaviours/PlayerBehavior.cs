@@ -98,9 +98,8 @@ namespace Behaviours
         private void Jump()
         {
             //the jump code
-            var velocity = rb.velocity;
-            velocity.y = jumpSpeed;
-            rb.velocity = velocity;
+            movement.y = jumpSpeed;
+            rb.velocity = movement;
             _audioSource.PlayOneShot(settings.Jump);
 
         }

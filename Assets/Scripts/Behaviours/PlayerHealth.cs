@@ -48,19 +48,9 @@ public class PlayerHealth : MonoBehaviour
           
         }
         
-        
-       
     }
     
-    private void Start()
-    {
-        
-        CurrentHealth = GameManager.instance.Data.currentHealth;
-        
-        
-    } 
     
-  
 //the player take the damage amount
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -69,8 +59,6 @@ public class PlayerHealth : MonoBehaviour
             TakeDamage(2);
             Debug.Log("obstacle touches");
             
-                
-       
 
         }
     }

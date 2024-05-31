@@ -105,6 +105,8 @@ public class GameManager : MonoBehaviour
         
 
     }
+    
+    
 
     //this method declare each staete
     public void ChangeStateofGame(GameState newState)
@@ -124,6 +126,8 @@ public class GameManager : MonoBehaviour
     {
         
         ChangeStateofGame(GameState.Playing);
+      
+        
     }
     public void ChangeStatetoWelcome()
     {
