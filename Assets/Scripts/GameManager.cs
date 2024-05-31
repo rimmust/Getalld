@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
 
     //create  a new instance from Scores 
     private Score scoreData = new Score();
+    
 
     //kopja tal scorData read only 
     public Score Data

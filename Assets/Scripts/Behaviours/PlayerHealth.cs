@@ -14,6 +14,7 @@ public class PlayerHealth : MonoBehaviour
 
     [SerializeField] private int maxHealth = 30 ;
 
+   
     public float NormalizedHeath
     {
         get
@@ -56,6 +57,7 @@ public class PlayerHealth : MonoBehaviour
         
         CurrentHealth = GameManager.instance.Data.currentHealth;
         
+        
     } 
     
   
@@ -66,6 +68,9 @@ public class PlayerHealth : MonoBehaviour
         {
             TakeDamage(2);
             Debug.Log("obstacle touches");
+            
+                
+       
 
         }
     }
